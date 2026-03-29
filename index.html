@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #e9e4ce;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(233, 228, 206, 0.95), transparent);
+            pointer-events: none;
+        }
+
+        header * {
+            pointer-events: auto;
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: #140092;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .logo em {
+            font-style: italic;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .infos {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            color: #140092;
+            text-decoration: none;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .infos:hover {
+            opacity: 0.7;
+        }
+
+        .gallery-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+        }
+
+        .gallery-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .gallery-item {
+            flex: 0 0 50vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.4s ease;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.92;
+        }
+
+        .divider {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(20, 0, 146, 0.15);
+            z-index: 5;
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex: 0 0 100vw;
+            }
+
+            header {
+                padding: 30px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .infos {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">É<em>tiam</em></div>
+        <a class="infos">Infos</a>
+    </header>
+
+    <div class="gallery-container" id="gallery">
+        <div class="gallery-item">
+            <img src="assets/images/foto1.jpg" alt="Galería 1">
+            <div class="divider"></div>
+        </div>
+        
+        <div class="gallery-item">
+            <img src="assets/images/foto2.jpg" alt="Galería 2">
+            <div class="divider"></div>
+        </div>
+
+        <div class="gallery-item">
+            <img src="assets/images/foto3.jpg" alt="Galería 3">
+        </div>
+    </div>
+
+    <script>
+        const gallery = document.getElementById('gallery');
+        let scrollAmount = 0;
+        const scrollSpeed = 50;
+
+        document.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            scrollAmount += e.deltaY > 0 ? scrollSpeed : -scrollSpeed;
+            gallery.scrollLeft = scrollAmount;
+        }, { passive: false });
+    </script>
+
+</body>
+</html>
