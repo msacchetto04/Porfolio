@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Informe de tendencias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(233, 228, 206, 0.97), transparent);
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em { font-style: italic; }
+
+        .nav-back {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            color: var(--azul);
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover { opacity: 0.7; }
+
+        /* ── HERO ── */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            background: linear-gradient(to top, rgba(233, 228, 206, 0.88) 0%, transparent 100%);
+        }
+
+        .hero-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 500;
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        /* ── META ── */
+        .meta-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px 60px;
+            display: flex;
+            gap: 60px;
+            border-bottom: 1px solid rgba(20, 0, 146, 0.12);
+            width: 100%;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meta-label {
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .meta-value {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        /* ── SECCIONES ── */
+        .project-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            width: 100%;
+            border-bottom: 1px solid rgba(20, 0, 146, 0.08);
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(28px, 3.5vw, 48px);
+            font-weight: 400;
+            font-weight: bold;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .section-desc {
+            font-size: 14px;
+            font-weight: 400;
+            font-weight: bold;
+            line-height: 2;
+            opacity: 0.7;
+            padding-top: 6px;
+        }
+
+        /* ── CARRUSEL MARQUEE ── */
+        @keyframes marquee-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-25%); }
+        }
+
+        .carousel {
+            overflow: hidden;
+            /* Rompe el max-width del contenedor y ocupa todo el viewport */
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: default;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 22s linear infinite;
+        }
+
+
+        .carousel-track img {
+            width: 520px;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+            margin-right: 16px;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(20, 0, 146, 0.12);
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--azul);
+            font-weight: 800;
+        }
+
+        .footer-logo em { font-style: italic; }
+
+        .footer-socials {
+            display: flex;
+            gap: 32px;
+        }
+
+        .social-link {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--azul);
+            transition: width 0.3s ease;
+        }
+
+        .social-link:hover { opacity: 0.6; }
+        .social-link:hover::after { width: 100%; }
+
+        .footer-copy {
+            font-size: 10px;
+            letter-spacing: 1px;
+            opacity: 0.4;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            header { padding: 30px; }
+            .logo { font-size: 28px; }
+            .hero-overlay { padding: 40px 30px; }
+            .meta-bar { padding: 60px 30px 40px; flex-wrap: wrap; gap: 32px; }
+            .project-section { padding: 60px 30px; }
+            .section-header { grid-template-columns: 1fr; gap: 24px; }
+            footer { flex-direction: column; gap: 32px; padding: 40px 30px; text-align: center; }
+            .footer-socials { flex-wrap: wrap; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← VOLVER,</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <img src="assets/images/foto1.jpeg" alt="Proyecto 1">
+        <div class="hero-overlay">
+            <p class="hero-tag">Informe &nbsp;·&nbsp; 2025</p>
+            <h1 class="hero-title">Informe de <br>tendencias</h1>
+        </div>
+    </section>
+
+    <!-- META -->
+    <div class="meta-bar">
+        <div class="meta-item">
+            <span class="meta-label">Año</span>
+            <span class="meta-value">2025</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Categoría</span>
+            <span class="meta-value">Informe</span>
+        </div>
+        <div class="meta-item">
+            <span class="meta-label">Tags</span>
+            <span class="meta-value">Estilismo / Fotografía</span>
+        </div>
+    </div>
+
+    <!-- SECCIÓN 1 -->
+    <section class="project-section">
+        <div class="section-header">
+            <h2 class="section-title">LOST GROUND</h2>
+            <p class="section-desc">El proyecto se enmarca en la investigación sobre el segmento preadolescente, con el objetivo de identificar tres microtendencias estéticas que configuran posibles escenarios de consumo futuro.
+
+A partir de la observación de cambios en sus modos de habitar, expresarse y vincularse con el consumo (respaldados también por distintos artículos y notas periodísticas) se detecta una macrotendencia denominada Lost Ground. Esta define un estado generacional caracterizado por la pérdida de un suelo simbólico desde el cual organizar la experiencia.
+
+Lost Ground refiere a que la infancia deja de funcionar como refugio y la adultez aún no se vuelve alcanzable. En este escenario, el preadolescente aprende a habitar la transición, a sostenerse en el movimiento y a construir sentido en condiciones de inestabilidad.
+
+Como respuesta a este contexto, emergen tres estrategias de adaptación que se manifiestan en formas estéticas, comportamientos y lenguajes visuales específicos. Estas son abordadas a través de tres microtendencias propias, que permiten analizar distintas maneras de procesar y operar sobre este presente: Urban Overload, The Hidden Self y Playful Shelter.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2 -->
+    <section class="project-section">
+        <div class="section-header">
+            <h2 class="section-title">Urban Overload</h2>
+            <p class="section-desc">Urban Overload aborda la sobreestimulación como condición cotidiana en el entorno preadolescente. En un contexto saturado de estímulos, información y estímulos urbanos, el sujeto desarrolla una forma de habitar basada en la acumulación, la simultaneidad y la intensidad. Lejos de buscar orden, incorpora el exceso como lenguaje, construyendo identidad a partir de lo múltiple, lo caótico y lo inmediato. Esta microtendencia refleja una estrategia de adaptación donde el desborde no se evita, sino que se asume y se procesa como forma de estar en el mundo.</p>
+        </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-track">
+                <img src="assets/Proyecto1/FotoP1_1.jpeg.jpeg" alt="Imagen 1">
+                <img src="assets/Proyecto1/FotoP1_2.jpeg.jpeg" alt="Imagen 2">
+                <img src="assets/Proyecto1/FotoP1_3.jpeg.jpeg" alt="Imagen 3">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3 -->
+    <section class="project-section">
+        <div class="section-header">
+            <h2 class="section-title">The Hidden Self</h2>
+            <p class="section-desc">The Hidden Self aborda la necesidad de intimidad y refugio en el contexto preadolescente. Frente a la exposición constante y la sobreestimulación del entorno, emerge una estrategia de construcción de identidad basada en la reserva, el secreto y la creación de espacios privados. Esta microtendencia refleja una forma de habitar donde el sujeto busca resguardar su mundo interior, diferenciarse a través de lo no dicho y construir sentido en la intimidad. Es una respuesta a la necesidad de tener un lugar propio, un territorio personal que funcione como refugio frente a la presión del afuera.</p>
+        </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-track">
+                <img src="assets/Proyecto1/FotoP1_4.jpeg" alt="Imagen 7">
+                <img src="assets/Proyecto1/FotoP1_5.jpeg" alt="Imagen 8">
+                <img src="assets/Proyecto1/FotoP1_6.jpeg" alt="Imagen 9">
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4 -->
+
+     <section class="project-section">
+        <div class="section-header">
+            <h2 class="section-title">Playful Shelter</h2>
+            <p class="section-desc">Playful Shelter aborda la necesidad de refugio y juego en el contexto preadolescente. Frente a la sobreestimulación y la pérdida de referentes, emerge una estrategia de construcción de identidad basada en la creación de espacios propios, la experimentación lúdica y la búsqueda de entornos seguros. Esta microtendencia refleja una forma de habitar donde el sujeto transforma su entorno a través del juego, construye sentido en la exploración y encuentra refugio en la creación. Es una respuesta a la necesidad de tener un lugar propio, un territorio personal que funcione como base para explorar el mundo.</p>
+        </div>
+        <div class="carousel" data-carousel>
+            <div class="carousel-track">
+                <img src="assets/Proyecto1/FotoP1_7.jpeg" alt="Imagen 4">
+                <img src="assets/Proyecto1/FotoP1_8.jpeg" alt="Imagen 5">
+                <img src="assets/Proyecto1/FotoP1_9.jpeg" alt="Imagen 6">
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div id="site-footer"></div>
+
+    <script src="assets/js/footer.js"></script>
+    <script>
+        // Clona las imágenes 3 veces extra (4 sets en total) → anima -25% para loop perfecto
+        // Esto garantiza que siempre llene toda la pantalla sin importar el ancho
+        document.querySelectorAll('[data-carousel]').forEach(carousel => {
+            const track = carousel.querySelector('.carousel-track');
+            const originals = Array.from(track.children);
+            for (let i = 0; i < 3; i++) {
+                originals.forEach(img => track.appendChild(img.cloneNode(true)));
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Éxtasis Criollo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(233, 228, 206, 0.97), transparent);
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em { font-style: italic; }
+
+        .nav-back {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            color: var(--azul);
+            text-decoration: none;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover { opacity: 0.7; }
+
+        /* ── HERO SPLIT ── */
+        .hero-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 120px 80px 80px;
+            position: relative;
+        }
+
+        .hero-tag {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.5;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(48px, 6vw, 88px);
+            font-weight: 700;
+            font-style: italic;
+            line-height: 0.95;
+            letter-spacing: -1px;
+            margin-bottom: 36px;
+        }
+
+        .hero-text {
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 2;
+            opacity: 0.75;
+            max-width: 480px;
+        }
+
+        .divider-v {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(20, 0, 146, 0.12);
+        }
+
+        /* ── CONTENIDO ── */
+        .content {
+            width: 100%;
+        }
+
+        /* ── CARRUSEL MARQUEE (fotos 9:16) ── */
+        @keyframes marquee-scroll {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-25%); }
+        }
+
+        .carousel-section {
+            padding: 80px 0 0;
+        }
+
+        .carousel {
+            overflow: hidden;
+            /* Ocupa todo el viewport rompiendo el flujo normal */
+            width: 100vw;
+            position: relative;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .carousel-track {
+            display: flex;
+            width: max-content;
+            animation: marquee-scroll 20s linear infinite;
+            gap: 12px;
+        }
+
+        /* Fotos 9:16: altura fija, ancho automático proporcional */
+        .carousel-track img {
+            height: 480px;
+            width: auto;       /* ≈ 270px para un 9:16 */
+            object-fit: cover;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        /* ── TEXTO ENTRE CARRUSELES ── */
+        .text-block {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 80px 60px;
+            text-align: center;
+        }
+
+        .text-block p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 2;
+            opacity: 0.75;
+        }
+
+        /* ── SECCIÓN VIDEO ── */
+        .video-section {
+            padding: 40px 60px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .video-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 400;
+            font-style: italic;
+            text-align: center;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .video-wrapper {
+            width: 100%;
+            max-width: 960px;
+            aspect-ratio: 16/9;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(20, 0, 146, 0.12);
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--azul);
+            font-weight: 800;
+        }
+
+        .footer-logo em { font-style: italic; }
+
+        .footer-socials {
+            display: flex;
+            gap: 32px;
+        }
+
+        .social-link {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--azul);
+            transition: width 0.3s ease;
+        }
+
+        .social-link:hover { opacity: 0.6; }
+        .social-link:hover::after { width: 100%; }
+
+        .footer-copy {
+            font-size: 10px;
+            letter-spacing: 1px;
+            opacity: 0.4;
+        }
+
+        /* ── RESPONSIVE MOBILE ── */
+        @media (max-width: 768px) {
+            header { padding: 20px 24px; }
+            .logo { font-size: 26px; }
+            .nav-back { font-size: 12px; }
+
+            /* Hero: apilado verticalmente */
+            .hero-split {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-image {
+                height: 55vw;
+                min-height: 240px;
+            }
+
+            .hero-content {
+                padding: 48px 24px 48px;
+            }
+
+            .hero-title {
+                font-size: clamp(40px, 11vw, 64px);
+                margin-bottom: 24px;
+            }
+
+            .divider-v { display: none; }
+
+            /* Carrusel: fotos más pequeñas en mobile */
+            .carousel-section { padding: 48px 0 0; }
+
+            .carousel-track img {
+                height: 300px;
+            }
+
+            /* Texto */
+            .text-block { padding: 48px 24px; }
+            .text-block p { font-size: 13px; }
+
+            /* Video */
+            .video-section { padding: 32px 24px 64px; gap: 24px; }
+
+            /* Footer */
+            footer {
+                flex-direction: column;
+                gap: 28px;
+                padding: 40px 24px;
+                text-align: center;
+            }
+            .footer-socials { flex-wrap: wrap; justify-content: center; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← VOLVER,</a>
+    </header>
+
+    <!-- HERO SPLIT -->
+    <section class="hero-split">
+        <div class="hero-image">
+            <img src="assets/images/foto2.jpeg" alt="Éxtasis Criollo">
+        </div>
+        <div class="hero-content">
+            <div class="divider-v"></div>
+            <p class="hero-tag">Fotografía &nbsp;·&nbsp; Julio 2025</p>
+            <h1 class="hero-title">Éxtasis<br>Criollo</h1>
+            <p class="hero-text">
+                El proyecto se enfoca en la producción audiovisual y fotográfica de la tendencia "Éxtasis Criollo". El concepto se enfoca en la evolución de los cafés tradicionales de Buenos Aires como espacios culturales y sociales, explorando la transición desde su pasado bohemio y tanguero hasta su encarnación contemporánea. La narrativa de la producción se centra en la figura de una mujer tradicional, inicialmente ligada a lo clásico y racional, que se introduce y habita un punto intermedio con el mundo de la cultura rave y electrónica.
+            </p>
+        </div>
+    </section>
+
+    <!-- CONTENIDO -->
+    <main class="content">
+
+        <!-- CARRUSEL 1 — fotos 9:16, marquee continuo -->
+        <div class="carousel-section">
+            <div class="carousel" data-marquee>
+                <div class="carousel-track">
+                    <img src="assets/Proyecto2/FotoP2_1.jpeg" alt="Imagen 1">
+                    <img src="assets/Proyecto2/FotoP2_2.jpeg" alt="Imagen 2">
+                    <img src="assets/Proyecto2/FotoP2_3.jpeg" alt="Imagen 3">
+                    <img src="assets/Proyecto2/FotoP2_4.jpeg" alt="Imagen 4">
+                    <img src="assets/Proyecto2/FotoP2_5.jpeg" alt="Imagen 5">
+                </div>
+            </div>
+        </div>
+
+        <!-- TEXTO ENTRE CARRUSELES -->
+        <div class="text-block">
+            <p>La protagonista lleva su historia encima, pero se deja afectar por lo nuevo. El estilismo refuerza este concepto de hibridez, rescatando elementos del vestir tradicional y reconfigurándolos en nuevas identidades.</p>
+        </div>
+
+        <!-- CARRUSEL 2 — fotos 9:16, marquee continuo (dirección invertida) -->
+        <div class="carousel-section">
+            <div class="carousel" data-marquee="reverse">
+                <div class="carousel-track" style="animation-direction: reverse;">
+                    <img src="assets/Proyecto2/FotoP2_6.jpeg" alt="Imagen 6">
+                    <img src="assets/Proyecto2/FotoP2_7.jpeg" alt="Imagen 7">
+                    <img src="assets/Proyecto2/FotoP2_8.jpeg" alt="Imagen 8">
+                    <img src="assets/Proyecto2/FotoP2_9.jpeg" alt="Imagen 9">
+                    <img src="assets/Proyecto2/FotoP2_10.jpeg" alt="Imagen 10">
+                </div>
+            </div>
+        </div>
+
+        <!-- VIDEO -->
+        <div class="video-section">
+            <h2 class="video-title">Fashion film,</h2>
+            <div class="video-wrapper">
+                <iframe
+                    src="https://www.youtube.com/embed/ZzZ5hB5zj2c?start=66"
+                    title="Éxtasis Criollo"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER reutilizable -->
+    <div id="site-footer"></div>
+
+    <script src="assets/js/footer.js"></script>
+    <script>
+        // Clona las imágenes 3 veces (4 sets totales) → anima -25% para loop perfecto sin saltos
+        document.querySelectorAll('[data-marquee]').forEach(carousel => {
+            const track = carousel.querySelector('.carousel-track');
+            const originals = Array.from(track.children);
+            for (let i = 0; i < 3; i++) {
+                originals.forEach(img => track.appendChild(img.cloneNode(true)));
+            }
+        });
+    </script>
+
+</body>
+</html>

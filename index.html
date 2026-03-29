@@ -6,7 +6,7 @@
     <title>Étiam</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -44,7 +44,7 @@
             font-family: 'EB Garamond', serif;
             font-size: 32px;
             color: #140092;
-            font-weight: 400;
+            font-weight: 800;
             letter-spacing: 0.5px;
         }
 
@@ -54,11 +54,12 @@
         }
 
         .infos {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'EB Garamond', serif;
             font-size: 14px;
             color: #140092;
             text-decoration: none;
             cursor: pointer;
+            font-weight: 800;
             letter-spacing: 1px;
             transition: opacity 0.3s ease;
         }
@@ -69,50 +70,83 @@
 
         .gallery-container {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             display: flex;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
+            overflow: hidden;
+            position: relative;
         }
 
-        .gallery-container::-webkit-scrollbar {
-            display: none;
+        .gallery-column {
+            width: 50%;
+            position: relative;
+            will-change: transform;
         }
 
         .gallery-item {
-            flex: 0 0 50vw;
-            height: 100vh;
             position: relative;
+            display: block;
+            cursor: pointer;
             overflow: hidden;
         }
 
         .gallery-item img {
             width: 100%;
-            height: 100%;
+            height: 100vh;
             object-fit: cover;
-            transition: opacity 0.4s ease;
+            display: block;
+            transition: transform 0.6s ease, filter 0.6s ease;
         }
 
         .gallery-item:hover img {
-            opacity: 0.92;
+            transform: scale(1.03);
+            filter: brightness(0.75);
+        }
+
+        .gallery-item-label {
+            position: absolute;
+            bottom: 36px;
+            left: 32px;
+            color: #e9e4ce;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item-label .label-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            display: block;
+        }
+
+        .gallery-item-label .label-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: block;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        .gallery-item:hover .gallery-item-label {
+            opacity: 1;
         }
 
         .divider {
-            position: absolute;
-            right: 0;
+            position: fixed;
+            left: 50%;
             top: 0;
             width: 1px;
             height: 100%;
             background: rgba(20, 0, 146, 0.15);
             z-index: 5;
+            transform: translateX(-50%);
         }
 
         @media (max-width: 768px) {
-            .gallery-item {
-                flex: 0 0 100vw;
-            }
-
             header {
                 padding: 30px;
             }
@@ -130,37 +164,140 @@
 <body>
 
     <header>
-        <div class="logo">É<em>tiam</em></div>
-        <a class="infos">Infos</a>
+        <div class="logo">É<em>tiam,</em></div>
+        <a class="infos">CONTACTO,</a>
     </header>
 
-    
     <div class="gallery-container" id="gallery">
-        <div class="gallery-item">
-            <img src="assets/images/foto1.jpeg" alt="Galería 1">
-            <div class="divider"></div>
+        <div class="gallery-column" id="col-left">
+            <a class="gallery-item" href="Proyecto1.html">
+                <img src="assets/images/foto1.jpeg" alt="Proyecto 1">
+                <div class="gallery-item-label">
+                    <span class="label-title">Informe de tendencias</span>
+                    <span class="label-tag">Informe · 2025</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto3.html">
+                <img src="assets/images/foto3.jpeg" alt="Proyecto 3">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto5.html">
+                <img src="assets/images/foto5.jpeg" alt="Proyecto 5">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto7.html">
+                <img src="assets/images/foto7.jpeg" alt="Proyecto 7">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto9.html">
+                <img src="assets/images/foto9.jpeg" alt="Proyecto 9">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
         </div>
-        
-        <div class="gallery-item">
-            <img src="assets/images/foto2.jpeg" alt="Galería 2">
-            <div class="divider"></div>
-        </div>
-
-        <div class="gallery-item">
-            <img src="assets/images/foto3.jpeg" alt="Galería 3">
+        <div class="gallery-column" id="col-right">
+            <a class="gallery-item" href="Proyecto2.html">
+                <img src="assets/images/foto2.jpeg" alt="Proyecto 2">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto4.html">
+                <img src="assets/images/foto4.jpeg" alt="Proyecto 4">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto6.html">
+                <img src="assets/images/foto6.jpeg" alt="Proyecto 6">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto8.html">
+                <img src="assets/images/foto8.jpeg" alt="Proyecto 8">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
+            <a class="gallery-item" href="Proyecto2.html">
+                <img src="assets/images/foto2.jpeg" alt="Proyecto 2">
+                <div class="gallery-item-label">
+                    <span class="label-title">Nombre Proyecto</span>
+                    <span class="label-tag">Categoría · 2024</span>
+                </div>
+            </a>
         </div>
     </div>
+    <div class="divider"></div>
 
     <script>
-        const gallery = document.getElementById('gallery');
-        let scrollAmount = 0;
-        const scrollSpeed = 50;
+        const colLeft = document.getElementById('col-left');
+        const colRight = document.getElementById('col-right');
+
+        let targetOffset = 0;
+        let currentOffset = 0;
+        const scrollSpeed = 1.2;
+        const lerpFactor = 0.08;
+
+        function getMaxScroll() {
+            const colHeight = colLeft.scrollHeight;
+            const viewHeight = window.innerHeight;
+            return colHeight - viewHeight;
+        }
 
         document.addEventListener('wheel', (e) => {
             e.preventDefault();
-            scrollAmount += e.deltaY > 0 ? scrollSpeed : -scrollSpeed;
-            gallery.scrollLeft = scrollAmount;
+            const maxScroll = getMaxScroll();
+            targetOffset += e.deltaY * scrollSpeed;
+            targetOffset = Math.max(0, Math.min(targetOffset, maxScroll));
         }, { passive: false });
+
+        function animate() {
+            currentOffset += (targetOffset - currentOffset) * lerpFactor;
+            const maxScroll = getMaxScroll();
+            colLeft.style.transform = `translateY(${-currentOffset}px)`;
+            colRight.style.transform = `translateY(${currentOffset - maxScroll}px)`;
+            requestAnimationFrame(animate);
+        }
+
+        const maxScroll = getMaxScroll();
+        colRight.style.transform = `translateY(${-maxScroll}px)`;
+
+        animate();
+
+        // Prevent navigation when scrolling — only navigate on clean click
+        let isScrolling = false;
+        let scrollTimer;
+
+        document.addEventListener('wheel', () => {
+            isScrolling = true;
+            clearTimeout(scrollTimer);
+            scrollTimer = setTimeout(() => { isScrolling = false; }, 150);
+        });
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                if (isScrolling) {
+                    e.preventDefault();
+                }
+            });
+        });
     </script>
 
 </body>
