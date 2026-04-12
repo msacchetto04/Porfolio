@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Memoria Vivida</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+            --border-soft: rgba(20, 0, 146, 0.1);
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em {
+            font-style: italic;
+        }
+
+        .nav-back {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.5;
+        }
+
+        /* ── MUSEUM LAYOUT ── */
+        .museum-wrapper {
+            width: 100%;
+            max-width: 1200px;
+            padding: 180px 40px 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Meta Header */
+        .meta-header {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 60px;
+            border-bottom: 1px solid var(--border-soft);
+            padding-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+            justify-content: center;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .meta-label {
+            font-size: 8px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            opacity: 0.4;
+        }
+
+        .meta-value {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            font-style: italic;
+            font-weight: 500;
+        }
+
+        /* Title */
+        .project-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(64px, 10vw, 140px);
+            font-weight: 400;
+            font-style: italic;
+            line-height: 0.85;
+            letter-spacing: -4px;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        /* Narrative blocks */
+        .narrative-section {
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 100px;
+        }
+
+        .narrative-lead {
+            font-family: 'EB Garamond', serif;
+            font-size: 28px;
+            line-height: 1.4;
+            font-style: italic;
+            font-weight: 500;
+            margin-bottom: 40px;
+            color: var(--azul);
+        }
+
+        .narrative-body {
+            font-size: 16px;
+            line-height: 2.2;
+            font-weight: 400;
+            opacity: 0.7;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        /* Gallery Grid */
+        .museum-gallery {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 100px;
+        }
+
+        .gallery-item {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item.full {
+            grid-column: span 2;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.03);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            width: 100%;
+            max-width: 1200px;
+            border-top: 1px solid var(--border-soft);
+            padding: 80px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .social-link {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--azul);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px;
+            }
+
+            .museum-wrapper {
+                padding: 140px 24px 60px;
+            }
+
+            .project-title {
+                font-size: 60px;
+                letter-spacing: -2px;
+            }
+
+            .meta-header {
+                gap: 24px;
+            }
+
+            .museum-gallery {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .gallery-item.full {
+                grid-column: span 1;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← INDEX</a>
+    </header>
+
+    <main class="museum-wrapper">
+
+        <!-- Metadata -->
+        <div class="meta-header">
+            <div class="meta-item">
+                <span class="meta-label">Year</span>
+                <span class="meta-value">2026</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Category</span>
+                <span class="meta-value">Fotografía</span>
+            </div>
+        </div>
+
+        <!-- Title -->
+        <h1 class="project-title">Memoria Vivida</h1>
+
+        <!-- First Narrative -->
+        <section class="narrative-section">
+            <p class="narrative-lead">
+                “La memoria no como un conjunto de recuerdos aislados, sino como un proceso continuo de acumulación de
+                experiencias.”
+            </p>
+            <div class="narrative-body">
+                El trabajo aborda la memoria vivida como eje conceptual, entendida como una estructura no lineal, donde
+                las vivencias se entrelazan y se organizan en capas que coexisten en el cuerpo. Tomando como referencia
+                la noción de rizoma, se propone una lectura de la memoria como red orgánica, sin jerarquías ni
+                recorridos únicos.
+            </div>
+        </section>
+
+        <!-- Main Gallery -->
+        <div class="museum-gallery">
+            <!-- Hero Shot -->
+            <div class="gallery-item full">
+                <img src="assets/Proyecto4/foto3.jpeg" alt="Hero Memory">
+            </div>
+
+            <!-- Side by Side -->
+            <div class="gallery-item">
+                <img src="assets/Proyecto4/foto1.jpeg" alt="Detail 1">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Proyecto4/foto2.jpeg" alt="Detail 2">
+            </div>
+        </div>
+
+        <!-- Second Narrative -->
+        <section class="narrative-section">
+            <div class="narrative-body">
+                Esta idea se traduce formalmente en el desarrollo de un objeto (collar) concebido como una prolongación
+                corporal que remite a un entramado de raíces, donde cada módulo representa una experiencia y su
+                repetición refuerza la noción de persistencia y continuidad.
+            </div>
+        </section>
+
+        <!-- Second Gallery Block (Spanning Layout) -->
+        <div class="museum-gallery" style="grid-template-rows: auto auto;">
+            <!-- Left image spanning both rows of the right column -->
+            <div class="gallery-item" style="grid-row: span 2; height: 100%;">
+                <img src="assets/Proyecto4/foto5.jpeg" alt="Detail 3" style="height: 100%; object-fit: cover;">
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/Proyecto4/foto4.jpeg" alt="Detail 4">
+            </div>
+            <div class="gallery-item">
+                <img src="assets/Proyecto4/foto7.jpeg" alt="Detail 5">
+            </div>
+
+            <!-- Closure Shot -->
+            <div class="gallery-item full">
+                <img src="assets/Proyecto4/foto6.jpeg" alt="Closure Shot">
+            </div>
+        </div>
+
+        <!-- Final Closure -->
+        <section class="narrative-section" style="margin-bottom: 0;">
+            <div class="narrative-body" style="font-size: 16px; opacity: 0.5;">
+                El proyecto se desarrolla de manera integral, abarcando la creación del concepto, el diseño y producción
+                del objeto, el estilismo y la realización fotográfica, entendiendo cada instancia como parte de un mismo
+                sistema que construye y refuerza la narrativa de la memoria vivida.
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-logo">É<em>tiam,</em></div>
+        <div class="footer-socials">
+            <a class="social-link" href="#">Instagram</a>
+            <a class="social-link" href="#">Behance</a>
+            <a class="social-link" href="#">Email</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>

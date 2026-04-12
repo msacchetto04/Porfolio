@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Al Gran Pueblo Argentino Salud!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, var(--crema), transparent);
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em {
+            font-style: italic;
+        }
+
+        .nav-back {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.5;
+        }
+
+        /* ── HERO SPLIT SECTION ── */
+        .hero-split {
+            display: flex;
+            width: 100%;
+            min-height: 100vh;
+        }
+
+        .video-part {
+            flex: 0 0 50%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .video-part iframe {
+            width: 100%;
+            height: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+        }
+
+        .text-part {
+            flex: 0 0 50%;
+            padding: 180px 10% 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .project-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.4;
+            margin-bottom: 24px;
+        }
+
+        .project-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(40px, 5vw, 78px);
+            font-weight: 700;
+            font-style: italic;
+            line-height: 0.95;
+            letter-spacing: -2px;
+            margin-bottom: 40px;
+            color: var(--azul);
+        }
+
+        /* ── CENTERED CONTENT SECTION ── */
+        .details-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 60px 100px;
+        }
+
+        .narrative-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .project-narrative {
+            font-size: 16px;
+            line-height: 2.2;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-bottom: 40px;
+            text-align: justify;
+        }
+
+        .project-narrative.small {
+            font-size: 14px;
+            opacity: 0.5;
+            line-height: 2;
+            margin-bottom: 120px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── BACKSTAGE ── */
+        .backstage-header {
+            width: 100%;
+            text-align: right;
+            margin-bottom: 60px;
+            border-bottom: 1px solid rgba(20, 0, 146, 0.1);
+            padding-bottom: 20px;
+        }
+
+        .backstage-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 42px;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--azul);
+        }
+
+        /* ── INFINITE CAROUSEL ── */
+        .carousel-outer {
+            width: 100%;
+            overflow: hidden;
+            margin-bottom: 100px;
+        }
+
+        .carousel-inner {
+            display: flex;
+            width: fit-content;
+            animation: moveLeft 35s linear infinite;
+        }
+
+        .carousel-card {
+            width: 300px;
+            height: 420px;
+            flex-shrink: 0;
+            padding: 0 15px;
+        }
+
+        .carousel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border: 1px solid rgba(20, 0, 146, 0.05);
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .carousel-card:hover img {
+            transform: scale(1.02);
+        }
+
+        @keyframes moveLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            border-top: 1px solid rgba(20, 0, 146, 0.1);
+            padding: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 40px;
+        }
+
+        .social-link {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--azul);
+            opacity: 0.6;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero-split {
+                flex-direction: column;
+            }
+
+            .video-part {
+                height: 56.25vw;
+                min-height: 400px;
+            }
+
+            .text-part {
+                padding: 100px 40px 60px;
+            }
+
+            .details-section {
+                padding: 40px 24px 80px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 30px;
+            }
+
+            .project-title {
+                font-size: 48px;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 40px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← INDEX</a>
+    </header>
+
+    <main>
+        <!-- FIRST SECTION: HERO SPLIT 50/50 -->
+        <section class="hero-split">
+            <div class="video-part">
+                <iframe src="https://www.youtube.com/embed/xqC0WltlL6I?autoplay=0&rel=0"
+                    title="Al Gran Pueblo Argentino Salud!"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="text-part">
+                <p class="project-tag">Fashion Film &nbsp;·&nbsp; 2024</p>
+                <h1 class="project-title">Al Gran Pueblo Argentino Salud!</h1>
+                <div class="project-narrative">
+                    Al gran pueblo argentino, salud! es un fashion film que reinterpreta los refranes populares
+                    argentinos a través de un lenguaje visual cargado de ironía, humor y surrealismo. Inspirado en la
+                    estética de Toiletpaper Magazine, el proyecto propone llevar al extremo la literalidad de los dichos
+                    tradicionales, transformando la sabiduría popular en una serie de escenas visuales que oscilan entre
+                    lo absurdo y lo poético. En cada secuencia, los refranes se materializan como performances que
+                    exponen la contradicción entre el significado simbólico y su ejecución física.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECOND SECTION: FULL WIDTH / CENTERED -->
+        <section class="details-section">
+            <div class="narrative-container">
+                <div class="project-narrative medium">
+                    Para su realización se desarrolló una dirección creativa integral, que abarcó desde la
+                    conceptualización inicial y el armado del brief hasta la dirección de arte, el casting, el
+                    estilismo, la selección de locaciones y la supervisión estética y narrativa del resultado final.
+                </div>
+
+                <!-- Backstage Header -->
+                <div class="backstage-header">
+                    <h2 class="backstage-title">Backstage,</h2>
+                </div>
+            </div>
+
+            <!-- Carousel (Full Width of the Detail Section) -->
+            <div class="carousel-outer">
+                <div class="carousel-inner">
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto1.jpeg" alt="BS 1"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto2.jpeg" alt="BS 2"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto3.jpeg" alt="BS 3"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto4.jpeg" alt="BS 4"></div>
+                    <!-- Clones -->
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto1.jpeg" alt="BS 1"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto2.jpeg" alt="BS 2"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto3.jpeg" alt="BS 3"></div>
+                    <div class="carousel-card"><img src="assets/Proyecto7/foto4.jpeg" alt="BS 4"></div>
+                </div>
+            </div>
+
+            <footer>
+                <div class="footer-logo">É<em>tiam,</em></div>
+                <div class="footer-socials">
+                    <a class="social-link" href="#">Instagram</a>
+                    <a class="social-link" href="#">Behance</a>
+                    <a class="social-link" href="#">Email</a>
+                </div>
+            </footer>
+        </section>
+    </main>
+
+</body>
+
+</html>

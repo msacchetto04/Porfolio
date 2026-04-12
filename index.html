@@ -30,11 +30,11 @@
             top: 0;
             left: 0;
             right: 0;
-            padding: 40px;
-            display: flex;
-            justify-content: space-between;
+            padding: 40px 60px;
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
             align-items: center;
-            z-index: 10;
+            z-index: 100;
             background: linear-gradient(to bottom, rgba(233, 228, 206, 0.95), transparent);
             pointer-events: none;
         }
@@ -54,6 +54,10 @@
         .logo em {
             font-style: italic;
             font-family: 'EB Garamond', serif;
+        }
+
+        .nav-center {
+            text-align: center;
         }
 
         .infos {
@@ -169,7 +173,8 @@
 
     <header>
         <div class="logo">É<em>tiam,</em></div>
-        <a class="infos">CONTACTO,</a>
+        <a class="infos nav-center" href="SobreMi.html">SOBRE MI,</a>
+        <a class="infos" style="text-align: right;" href="https://linktr.ee/maitesacchetto" target="_blank">CONTACTO,</a>
     </header>
 
     <div class="gallery-container" id="gallery">
@@ -191,22 +196,22 @@
             <a class="gallery-item" href="Proyecto5.html">
                 <img src="assets/images/foto5.jpeg" alt="Proyecto 5">
                 <div class="gallery-item-label">
-                    <span class="label-title">Nombre Proyecto</span>
-                    <span class="label-tag">Categoría · 2024</span>
+                    <span class="label-title">Diseño de Tendencias</span>
+                    <span class="label-tag">Diseño · 2024</span>
                 </div>
             </a>
             <a class="gallery-item" href="Proyecto7.html">
                 <img src="assets/images/foto7.jpeg" alt="Proyecto 7">
                 <div class="gallery-item-label">
-                    <span class="label-title">Nombre Proyecto</span>
-                    <span class="label-tag">Categoría · 2024</span>
+                    <span class="label-title">Al Gran Pueblo Argentino Salud</span>
+                    <span class="label-tag">Fashion Film · 2024</span>
                 </div>
             </a>
             <a class="gallery-item" href="Proyecto9.html">
                 <img src="assets/images/foto9.jpeg" alt="Proyecto 9">
                 <div class="gallery-item-label">
-                    <span class="label-title">Nombre Proyecto</span>
-                    <span class="label-tag">Categoría · 2024</span>
+                    <span class="label-title">Arte BA</span>
+                    <span class="label-tag">Informe de Tendencias · 2025</span>
                 </div>
             </a>
         </div>
@@ -221,8 +226,8 @@
             <a class="gallery-item" href="Proyecto4.html">
                 <img src="assets/images/foto4.jpeg" alt="Proyecto 4">
                 <div class="gallery-item-label">
-                    <span class="label-title">Nombre Proyecto</span>
-                    <span class="label-tag">Categoría · 2024</span>
+                    <span class="label-title">Memoria vivida</span>
+                    <span class="label-tag">Fotografía · 2026</span>
                 </div>
             </a>
             <a class="gallery-item" href="Proyecto6.html">

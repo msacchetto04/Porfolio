@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Informe de Tendencias ARTE BA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+            --overlay-bg: rgba(20, 0, 146, 0.05);
+            --blur-bg: rgba(233, 228, 206, 0.85);
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em {
+            font-style: italic;
+        }
+
+        .nav-back {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.5;
+        }
+
+        /* ── CONTENT WRAPPER ── */
+        .content-wrapper {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 180px 60px 100px;
+        }
+
+        /* Main Titles */
+        .hero-section {
+            text-align: center;
+            margin-bottom: 120px;
+        }
+
+        .main-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(48px, 8vw, 100px);
+            font-weight: 500;
+            font-style: italic;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .sub-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            opacity: 0.6;
+        }
+
+        /* Tendency Section */
+        .tendency-section {
+            width: 100%;
+            margin-bottom: 150px;
+        }
+
+        .tendency-header {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(32px, 4vw, 56px);
+            font-weight: 500;
+            margin-bottom: 40px;
+            display: block;
+        }
+
+        .align-left { text-align: left; }
+        .align-right { text-align: right; }
+
+        /* 5x2 Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-bottom: 60px;
+        }
+
+        /* ── BLUR REVEAL INTERACTION ── */
+        .reveal-container {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 1/1;
+            overflow: hidden;
+            background: rgba(20, 0, 146, 0.05);
+        }
+
+        .reveal-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .reveal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--blur-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            transition: opacity 0.6s ease;
+            z-index: 2;
+        }
+
+        .reveal-container:hover img {
+            transform: scale(1.1);
+        }
+
+        .reveal-container:hover .reveal-overlay {
+            opacity: 1;
+        }
+
+        .reveal-title {
+            font-family: 'EB Garamond', serif;
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--azul);
+        }
+
+        .reveal-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 500;
+            opacity: 0.7;
+        }
+
+        /* Narrative Text */
+        .narrative-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 15px;
+            line-height: 2.2;
+            text-align: justify;
+            text-align-last: center;
+            opacity: 0.8;
+        }
+
+        /* ── DRIVE LINK ── */
+        .link-section {
+            text-align: center;
+            padding: 100px 0;
+            border-top: 1px solid rgba(20, 0, 146, 0.1);
+        }
+
+        .drive-link {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            font-style: italic;
+            color: var(--azul);
+            text-decoration: none;
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .drive-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--azul);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.5s ease;
+        }
+
+        .drive-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            width: 100%;
+            border-top: 1px solid rgba(20, 0, 146, 0.1);
+            padding: 80px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--crema);
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            font-weight: 800;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 40px;
+        }
+
+        .social-link {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: var(--azul);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1100px) {
+            .photo-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 30px; }
+            .content-wrapper { padding: 140px 24px 60px; }
+            .photo-grid { grid-template-columns: repeat(2, 1fr); }
+            footer { flex-direction: column; gap: 40px; text-align: center; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← VOLVER</a>
+    </header>
+
+    <main class="content-wrapper">
+
+        <!-- Hero -->
+        <section class="hero-section">
+            <h1 class="main-title">Informe de tendencias</h1>
+            <p class="sub-title">ARTE BA 2025</p>
+        </section>
+
+        <!-- SECCIÓN 1: RAIGAMBRE -->
+        <section class="tendency-section">
+            <h2 class="tendency-header align-left">Tendencia "Raigambre"</h2>
+            
+            <div class="photo-grid">
+                <!-- 10 Photos -->
+                <script>
+                    for (let i = 1; i <= 10; i++) {
+                        document.write(`
+                            <div class="reveal-container">
+                                <img src="assets/Proyecto9/foto${i}.jpeg" alt="Raigambre ${i}">
+                                <div class="reveal-overlay">
+                                    <h3 class="reveal-title">Obra ${i.toString().padStart(2, '0')}</h3>
+                                    <p class="reveal-tag">RAIGAMBRE / 2025</p>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+
+            <p class="narrative-text">
+                El informe se enfoca en dos macrotendencias identificadas en el arte contemporáneo argentino, de la feria ARTEBA. Este espacio reúne lo más destacado del arte moderno y contemporáneo, con galerías de Argentina y del mundo, en un recorrido de 11.000m. Su objetivo es incentivar la producción artística, acercar personas al arte, y promover la circulación de obras argentinas en circuitos regionales y globales. La feria se realiza en el Centro Costa Salguero y se organiza por una ONG sin fines de lucro.
+            </p>
+        </section>
+
+        <!-- SECCIÓN 2: CARNOMUTA -->
+        <section class="tendency-section">
+            <h2 class="tendency-header align-right">Tendencia "carnomuta"</h2>
+            
+            <div class="photo-grid">
+                <!-- 10 Photos -->
+                <script>
+                    for (let j = 11; j <= 20; j++) {
+                        document.write(`
+                            <div class="reveal-container">
+                                <img src="assets/Proyecto9/foto${j}.jpeg" alt="Carnomuta ${j}">
+                                <div class="reveal-overlay">
+                                    <h3 class="reveal-title">Obra ${j.toString().padStart(2, '0')}</h3>
+                                    <p class="reveal-tag">CARNOMUTA / 2025</p>
+                                </div>
+                            </div>
+                        `);
+                    }
+                </script>
+            </div>
+
+            <p class="narrative-text">
+                El concepto postula que el futuro germina en lo profundo, utilizando el territorio no como un límite, sino como una raíz que se expande hacia adelante. De lo ancestral nacen signos nuevos, archivos de memoria que se transforman en lenguaje vivo. Estas huellas ancestrales emergen como mapas que orientan el porvenir, trazados con materiales pertenecientes a la tierra. Lo autóctono se reactiva como creación, con la certeza de que las raíces sostienen y que en lo originario late la posibilidad de un crecimiento fértil.
+            </p>
+        </section>
+
+        <!-- Drive Link Section -->
+        <section class="link-section">
+            <a href="https://drive.google.com/drive/folders/1pzaVCPmn-IRhFbqJGCVp-7IH8sAk4uXP" target="_blank" class="drive-link">
+                Link al informe
+            </a>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="footer-logo">É<em>tiam,</em></div>
+        <div class="footer-socials">
+            <a class="social-link" href="#">Instagram</a>
+            <a class="social-link" href="#">Behance</a>
+            <a class="social-link" href="#">Contacto</a>
+        </div>
+    </footer>
+
+</body>
+
+</html>
