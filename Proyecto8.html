@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Étiam — Nombre Proyecto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --crema: #e9e4ce;
+            --azul: #140092;
+        }
+
+        body {
+            background-color: var(--crema);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--azul);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ── HEADER ── */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(233, 228, 206, 0.97), transparent);
+        }
+
+        .logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 32px;
+            color: var(--azul);
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+        }
+
+        .logo em {
+            font-style: italic;
+            font-family: 'EB Garamond', serif;
+        }
+
+        .nav-back {
+            font-family: 'EB Garamond', serif;
+            font-size: 14px;
+            color: var(--azul);
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-back:hover {
+            opacity: 0.7;
+        }
+
+        /* ── HERO IMAGE ── */
+        .hero {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 60px;
+            background: linear-gradient(to top, rgba(233, 228, 206, 0.85) 0%, transparent 100%);
+        }
+
+        .hero-tag {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--azul);
+            opacity: 0.7;
+            margin-bottom: 12px;
+        }
+
+        .hero-title {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(48px, 7vw, 96px);
+            font-weight: 500;
+            color: var(--azul);
+            line-height: 1;
+            letter-spacing: -1px;
+        }
+
+        /* ── CONTENT ── */
+        .content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 100px 60px;
+            width: 100%;
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 60px;
+            margin-bottom: 80px;
+            padding-bottom: 60px;
+            border-bottom: 1px solid rgba(20, 0, 146, 0.12);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .meta-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        .meta-value {
+            font-family: 'EB Garamond', serif;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .project-description {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-bottom: 100px;
+        }
+
+        .description-heading {
+            font-family: 'EB Garamond', serif;
+            font-size: clamp(32px, 4vw, 52px);
+            font-weight: 400;
+            line-height: 1.15;
+            letter-spacing: -0.5px;
+        }
+
+        .description-body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            line-height: 2;
+            opacity: 0.75;
+            padding-top: 8px;
+        }
+
+        /* ── IMAGE GRID ── */
+        .image-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+            align-items: start;
+        }
+
+        .image-grid img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .image-full {
+            width: 100%;
+            margin-bottom: 16px;
+        }
+
+        .image-full img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            margin-top: auto;
+            border-top: 1px solid rgba(20, 0, 146, 0.12);
+            padding: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'EB Garamond', serif;
+            font-size: 24px;
+            color: var(--azul);
+            font-weight: 800;
+        }
+
+        .footer-logo em {
+            font-style: italic;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .social-link {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--azul);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .social-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--azul);
+            transition: width 0.3s ease;
+        }
+
+        .social-link:hover {
+            opacity: 0.6;
+        }
+
+        .social-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-copy {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            opacity: 0.4;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .hero-overlay {
+                padding: 40px 30px;
+            }
+
+            .content {
+                padding: 60px 30px;
+            }
+
+            .project-meta {
+                flex-wrap: wrap;
+                gap: 32px;
+            }
+
+            .project-description {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 32px;
+                padding: 40px 30px;
+                text-align: center;
+            }
+
+            .footer-socials {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <a class="logo" href="index.html">É<em>tiam,</em></a>
+        <a class="nav-back" href="index.html">← VOLVER,</a>
+    </header>
+
+    <!-- HERO: reemplazar src con la imagen principal del proyecto -->
+    <section class="hero">
+        <img src="assets/images/foto8.jpeg" alt="Nombre Proyecto">
+        <div class="hero-overlay">
+            <p class="hero-tag">Tesis &nbsp;·&nbsp; 2025</p>
+            <h1 class="hero-title">Indest</h1>
+        </div>
+    </section>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+        <!-- META INFO -->
+        <div class="project-meta">
+            <div class="meta-item">
+                <span class="meta-label">Año</span>
+                <span class="meta-value">2025</span>
+            </div>
+            <div class="meta-item">
+                <span class="meta-label">Categoría</span>
+                <span class="meta-value">Tesis</span>
+            </div>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="project-description">
+            <h2 class="description-heading" style="font-weight: bold; text-align: center;">Indest</h2>
+            <p class="description-body">
+                Este proyecto se desarrolla a partir de la emoción proyectada de WGSN para 2027, el optimismo
+                sospechoso. Tomamos esa base y, tras una mirada crítica hacia la tecnología y la inteligencia
+                artificial, expresada en la preposición "El optimismo sospechoso como el asombro ante los sismos
+                tecnológicos", comenzamos a indagar más profundamente en la sismología, pero ahora aplicada a la
+                identidad nacional. Fue así que descubrimos el INPRES, el Instituto Nacional de Prevención Sísmica, y
+                sus instrumentos para medir el movimiento, como el sismógrafo y el primer péndulo creado por Jorge
+                Fontana. A partir de la preposición "Los argentinos como sensores de lo que late debajo de cada capa de
+                la tierra", desarrollamos una nueva estética y tendencia: el INDEST. Esta propuesta tuvo como símbolo un
+                estereotipo, la sismóloga del futuro, y se articuló en un sistema de productos: un mate, una pava, un
+                choripán y un vehículo. Tanto mi equipo como yo participamos en la conceptualización, la búsqueda de una
+                narrativa, la creación de los productos, la dirección creativa y el estilismo de las producciones. Así
+                culminamos un proceso donde la identidad nacional y la sismología se fusionaron con la tecnología para
+                generar una estética innovadora.
+            </p>
+        </div>
+
+        <!-- IMÁGENES DEL PROYECTO -->
+        <!-- Imagen ancha -->
+        <div class="image-full">
+            <img src="assets/Proyecto8/foto1.jpeg" alt="Proyecto vista 1">
+        </div>
+
+        <!-- Grid 2 columnas -->
+        <div class="image-grid">
+            <img src="assets/Proyecto8/foto2.jpeg" alt="Proyecto vista 2">
+            <img src="assets/Proyecto8/foto3.jpeg" alt="Proyecto vista 3">
+        </div>
+
+        <!-- Otra imagen ancha -->
+        <div class="image-full">
+            <img src="assets/Proyecto8/foto4.jpeg" alt="Proyecto vista 4">
+        </div>
+
+        <p style="text-align: center; font-style: italic; font-weight: bold; margin-top: 60px; font-size: 1.2rem; margin-bottom: 20px;">El futuro argentino nunca será quieto, y ahí reside nuestra fuerza.</p>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-logo">É<em>tiam,</em></div>
+        <div class="footer-socials">
+            <a class="social-link" href="https://instagram.com/etiam" target="_blank" rel="noopener">Instagram</a>
+            <a class="social-link" href="https://behance.net/etiam" target="_blank" rel="noopener">Behance</a>
+            <a class="social-link" href="mailto:hola@etiam.com">Contacto</a>
+        </div>
+        <span class="footer-copy">© 2024 Étiam</span>
+    </footer>
+
+</body>
+
+</html>
