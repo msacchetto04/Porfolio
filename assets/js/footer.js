@@ -8,8 +8,8 @@
     <footer>
         <div class="footer-logo">É<em>tiam,</em></div>
         <div class="footer-socials">
+            <a class="social-link" href="https://www.instagram.com/maisacchetto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener">Instagram</a>
             <a class="social-link" href="https://www.behance.net/maitesacchetto1" target="_blank" rel="noopener">Behance</a>
-            <a class="social-link" href="https://www.instagram.com/maisacchetto/" target="_blank" rel="noopener">Instagram</a>
             <a class="social-link" href="https://linktr.ee/maitesacchetto" target="_blank" rel="noopener">Contacto</a>
         </div>
         <span class="footer-copy">© 2025 Étiam</span>

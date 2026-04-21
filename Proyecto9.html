@@ -306,17 +306,30 @@
             <div class="photo-grid">
                 <!-- 10 Photos -->
                 <script>
-                    for (let i = 1; i <= 10; i++) {
+                    const raigambreData = [
+                        { id: 1, artist: "Gisela Banzer", title: "La llorona", year: "2023" },
+                        { id: 2, artist: "Hernán Soriano", title: "Minaccia", year: "2021" },
+                        { id: 3, artist: "Gabriel Alarcón", title: "Bandera de reinicio N°2", year: "2025" },
+                        { id: 4, artist: "Paulina Carreño", title: "Congreso Argentino", year: "2025" },
+                        { id: 5, artist: "Gabriel Chaile", title: "Los jóvenes olvidaron sus canciones o Tierra del Fuego", year: "2023" },
+                        { id: 6, artist: "Florencia Alvarado", title: "Venus bolita", year: "2024" },
+                        { id: 7, artist: "Luis Enrique ZK", title: "Rituales Mutantes", year: "2025" },
+                        { id: 8, artist: "Federico Cantini", title: "", year: "2025" },
+                        { id: 9, artist: "Florencia Caiazza", title: "", year: "2025" },
+                        { id: 10, artist: "Manuel Brandazza", title: "Soy con el río", year: "2025" }
+                    ];
+
+                    raigambreData.forEach(item => {
                         document.write(`
                             <div class="reveal-container">
-                                <img src="assets/Proyecto9/foto${i}.jpeg" alt="Raigambre ${i}">
+                                <img src="assets/Proyecto9/foto${item.id}.jpeg" alt="${item.artist}">
                                 <div class="reveal-overlay">
-                                    <h3 class="reveal-title">Obra ${i.toString().padStart(2, '0')}</h3>
-                                    <p class="reveal-tag">RAIGAMBRE / 2025</p>
+                                    <h3 class="reveal-title">${item.artist}</h3>
+                                    <p class="reveal-tag">${item.title ? `"${item.title}" / ` : ""}${item.year}</p>
                                 </div>
                             </div>
                         `);
-                    }
+                    });
                 </script>
             </div>
 
@@ -332,17 +345,30 @@
             <div class="photo-grid">
                 <!-- 10 Photos -->
                 <script>
-                    for (let j = 11; j <= 20; j++) {
+                    const carnomutaData = [
+                        { id: 11, artist: "Florencia Aparicio", title: "El beso", year: "2023" },
+                        { id: 12, artist: "Lorena Guzmán", title: "", year: "2025" },
+                        { id: 13, artist: "Ulises Mazzucca", title: "La energía puta aparecerá como un asalto", year: "" },
+                        { id: 14, artist: "Santiago Poggio", title: "Pintura Nro.280", year: "2024" },
+                        { id: 15, artist: "Diego Bianchi", title: "", year: "2025" },
+                        { id: 16, artist: "Yoto", title: "", year: "2025" },
+                        { id: 17, artist: "Eva Mora Cafiero", title: "", year: "2025" },
+                        { id: 18, artist: "Alexis Minkiewicz", title: "Cupido", year: "2025" },
+                        { id: 19, artist: "Nina Kunan", title: "", year: "2025" },
+                        { id: 20, artist: "Josefina Labourt", title: "Detrás del telón", year: "2025" }
+                    ];
+
+                    carnomutaData.forEach(item => {
                         document.write(`
                             <div class="reveal-container">
-                                <img src="assets/Proyecto9/foto${j}.jpeg" alt="Carnomuta ${j}">
+                                <img src="assets/Proyecto9/foto${item.id}.jpeg" alt="${item.artist}">
                                 <div class="reveal-overlay">
-                                    <h3 class="reveal-title">Obra ${j.toString().padStart(2, '0')}</h3>
-                                    <p class="reveal-tag">CARNOMUTA / 2025</p>
+                                    <h3 class="reveal-title">${item.artist}</h3>
+                                    <p class="reveal-tag">${item.title ? `"${item.title}" / ` : ""}${item.year}</p>
                                 </div>
                             </div>
                         `);
-                    }
+                    });
                 </script>
             </div>
 
@@ -363,9 +389,9 @@
     <footer>
         <div class="footer-logo">É<em>tiam,</em></div>
         <div class="footer-socials">
-            <a class="social-link" href="#">Instagram</a>
-            <a class="social-link" href="#">Behance</a>
-            <a class="social-link" href="#">Contacto</a>
+            <a class="social-link" href="https://www.instagram.com/maisacchetto?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">Instagram</a>
+            <a class="social-link" href="https://www.behance.net/maitesacchetto1" target="_blank">Behance</a>
+            <a class="social-link" href="https://linktr.ee/maitesacchetto" target="_blank">Contacto</a>
         </div>
     </footer>
 
